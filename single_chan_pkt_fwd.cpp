@@ -79,6 +79,13 @@
 #include <string>
 #include <vector>
 
+#include "ArduiPi_OLED_lib.h"
+#include "Adafruit_GFX.h"
+#include "ArduiPi_OLED.h"
+
+// Instantiate the display
+ArduiPi_OLED display;
+
 using namespace std;
 
 using namespace rapidjson;
@@ -651,6 +658,15 @@ int main()
   uint32_t lasttime;
   unsigned int led1_timer;
 
+  // Init I2C Oled
+  if ( !display.init(OLED_I2C_RESET,3) ) {
+        exit(EXIT_FAILURE);
+  }
+
+  display.begin();
+  display.clearDisplay();
+  display.display(); 
+ 
   LoadConfiguration("global_conf.json");
   PrintConfiguration();
 

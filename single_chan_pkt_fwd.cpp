@@ -666,15 +666,30 @@ int main()
   display.begin();
   display.clearDisplay();
   display.display(); 
+
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+  display.setCursor(0,0);
+  display.print("Loading config ");
+  display.display();
  
   LoadConfiguration("global_conf.json");
   PrintConfiguration();
+
+  display.print("OK\n");
+  display.display();
+
+  display.print("Set wiring ");
+  display.display();
 
   // Init WiringPI
   wiringPiSetup() ;
   pinMode(ssPin, OUTPUT);
   pinMode(dio0, INPUT);
   pinMode(RST, OUTPUT);
+
+  display.print("OK\n");
+  display.display();
 
   // LED ?
   if (Led1 != 0xff) {
@@ -692,8 +707,14 @@ int main()
   // Init SPI
   wiringPiSPISetup(SPI_CHANNEL, 500000);
 
+  display.print("Setup LORA ");
+  display.display();
+
   // Setup LORA
   SetupLoRa();
+
+  display.print("OK\n");
+  display.display();
 
   // Prepare Socket connection
   if ((s = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == -1) {

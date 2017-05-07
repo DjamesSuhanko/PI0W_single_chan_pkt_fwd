@@ -676,7 +676,7 @@ int main()
   LoadConfiguration("global_conf.json");
   PrintConfiguration();
 
-  display.print("OK\n");
+  display.print("   OK\n");
   display.display();
 
   display.print("Set wiring ");
@@ -688,7 +688,7 @@ int main()
   pinMode(dio0, INPUT);
   pinMode(RST, OUTPUT);
 
-  display.print("OK\n");
+  display.print("       OK\n");
   display.display();
 
   // LED ?
@@ -704,8 +704,14 @@ int main()
     }
   }
 
+  display.print("Init SPI ");
+  display.display();
+
   // Init SPI
   wiringPiSPISetup(SPI_CHANNEL, 500000);
+
+  display.print("         OK\n");
+  display.display();
 
   display.print("Setup LORA ");
   display.display();
@@ -713,7 +719,7 @@ int main()
   // Setup LORA
   SetupLoRa();
 
-  display.print("OK\n");
+  display.print("       OK\n");
   display.display();
 
   // Prepare Socket connection

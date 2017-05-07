@@ -3,8 +3,8 @@ Single Channel LoRaWAN Gateway
 This repository contains a proof-of-concept implementation of a single
 channel LoRaWAN gateway.
 
-It has been tested on the Raspberry Pi platform, using a Semtech SX1272
-transceiver (HopeRF RFM92W), and SX1276 (HopeRF RFM95W).
+This version was modified to work with [Raspberry PI0W Lora Shield with I2C and OLED][3]
+
 
 The code is for testing and development purposes only, and is not meant
 for production usage.
@@ -15,7 +15,8 @@ Part of the source has been copied from the Semtech Packet Forwarder
 Maintainer: Thomas Telkamp <thomas@telkamp.eu>
 
 Was forked by @jlesech https://github.com/tftelkamp/single_chan_pkt_fwd to add json configuration file    
-then forked by @hallard https://github.com/hallard/single_chan_pkt_fwd 
+then forked by @hallard https://github.com/hallard/single_chan_pkt_fwd
+then forked by @tuxtof https://github.com/tuxtof/single_chan_pkt_fwd to add oled display support
 
 Added new Features
 ------------------
@@ -170,5 +171,6 @@ The source files in this repository are made available under the Eclipse Public 
 
 [1]: https://github.com/hallard/LoRasPI
 [2]: http://wiki.dragino.com/index.php?title=Lora/GPS_HAT
+[3]: https://www.tindie.com/products/electronictrik/raspberry-pi0w-lora-shield-with-i2c-and-oled/
  
 

@@ -15,7 +15,7 @@ Part of the source has been copied from the Semtech Packet Forwarder
 Maintainer: Thomas Telkamp <thomas@telkamp.eu>
 
 Was forked by @jlesech https://github.com/tftelkamp/single_chan_pkt_fwd to add json configuration file    
-then forked by @hallard https://github.com/hallard/single_chan_pkt_fwd
+then forked by @hallard https://github.com/hallard/single_chan_pkt_fwd                                          
 then forked by @tuxtof https://github.com/tuxtof/single_chan_pkt_fwd to add oled display support
 
 Added new Features

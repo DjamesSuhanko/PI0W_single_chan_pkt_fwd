@@ -3,7 +3,7 @@
 
 CC = g++
 CFLAGS = -std=c++11 -c -Wall -I include/
-LIBS = -lwiringPi
+LIBS = -lwiringPi -lArduiPi_OLED
 
 all: single_chan_pkt_fwd
 

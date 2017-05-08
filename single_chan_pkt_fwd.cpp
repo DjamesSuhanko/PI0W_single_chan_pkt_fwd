@@ -530,6 +530,7 @@ bool Receivepacket()
   long int SNR;
   int rssicorr;
   bool ret = false;
+  char stat_timestamp[24]; 
 
   if (digitalRead(dio0) == 1) {
     char message[256];
@@ -550,6 +551,18 @@ bool Receivepacket()
 
       rssicorr = sx1272 ? 139 : 157;
 
+      time_t t = time(NULL);
+      strftime(stat_timestamp, sizeof stat_timestamp, "%T", localtime(&t));
+
+      display.clearDisplay();
+      display.setTextSize(1);
+      display.setCursor(0,0);
+      display.print("------ Packet ------\n\n");
+      display.printf("Time:  %s\n", stat_timestamp );
+      display.printf("RSSI:  %d\n", ReadRegister(0x1A) - rssicorr);
+      display.printf("SNR:   %li\n", SNR);
+      display.printf("LEN:   %hhu\n", length);
+
       printf("Packet RSSI: %d, ", ReadRegister(0x1A) - rssicorr);
       printf("RSSI: %d, ", ReadRegister(0x1B) - rssicorr);
       printf("SNR: %li, ", SNR);
@@ -557,7 +570,9 @@ bool Receivepacket()
       for (int i=0; i<length; i++) {
         char c = (char) message[i];
         printf("%c",isprint(c)?c:'.');
+        display.printf("%c",isprint(c)?c:'.');
       }
+      display.display();
       printf("'\n");
 
       char buff_up[TX_BUFF_SIZE]; /* buffer to compose the upstream packet */
@@ -670,6 +685,7 @@ int main()
   display.setTextSize(1);
   display.setTextColor(WHITE);
   display.setCursor(0,0);
+  display.print("--- LoRa Gateway ---\n\n");
   display.print("Loading config ");
   display.display();
  

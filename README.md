@@ -1,9 +1,9 @@
-Single Channel LoRaWAN Gateway
+PI0W Single Channel LoRaWAN Gateway
 ==============================
 This repository contains a proof-of-concept implementation of a single
 channel LoRaWAN gateway.
 
-This version was modified to work with [Raspberry PI0W Lora Shield with I2C and OLED][3]
+This version was modified to work with [Raspberry PI0W Lora Shield with I2C and OLED][3] from Electronictricks
 
 
 The code is for testing and development purposes only, and is not meant
@@ -21,11 +21,12 @@ then forked by @tuxtof https://github.com/tuxtof/single_chan_pkt_fwd to add oled
 Added new Features
 ------------------
 
-- Added support for [Dragino Lora HAT][2] and [LoRasPi][1] (more to come)
+- Added support for [Electronictricks Lora Shield][3], [Dragino Lora HAT][2] and [LoRasPi][1] (more to come)
+- Oled screen
 - pin definition are in config file
 - Removed some configuration hard coded in source file and put them into global_conf.json
 - renamed main.cpp to single_chan_pkt_fwd.cpp
-- added single_chan_pkt_fwd.service for systemd (debian jessie minimal) start 
+- added single_chan_pkt_fwd.service for systemd (debian jessie minimal) start
 - added `make install` and `make uninstall` into Makefile to install service
 - added control for On board Led's if any
 
@@ -61,6 +62,14 @@ root@pi04 # gpio readall
 | BCM | wPi |   Name  | Physical | Name    | wPi | BCM |
 +-----+-----+---------+--B Plus--+---------+-----+-----+
 ```
+* For [Electronictricks Lora Shield][3]
+pins configuration in `global_conf.json`
+```
+  "pin_nss": 10,
+  "pin_dio0": 6,
+  "pin_rst": 21,
+  "pin_led1":7
+```
 
 * For [Dragino RPI Lora][2] HAT    
 pins configuration in `global_conf.json`
@@ -85,9 +94,22 @@ Installation
 
 Install dependencies as indicated in original README.md below then
 
+Install bcm2835 library
+```
+wget http://www.open.com.au/mikem/bcm2835/bcm2835-1.50.tar.gz
+tar xvfz bcm2835-1.50.tar.gz
+cd bcm2835-1.50
+
+./configure
+make
+sudo make install
+```
+
+Install PI0W Single Channel Packet Forwarder
+
 ```shell
 cd /home/pi
-git clone https://github.com/hallard/single_chan_pkt_fwd
+git clone https://github.com/tuxtof/PI0W_single_chan_pkt_fwd
 make
 sudo make install
 ````
@@ -172,5 +194,3 @@ The source files in this repository are made available under the Eclipse Public 
 [1]: https://github.com/hallard/LoRasPI
 [2]: http://wiki.dragino.com/index.php?title=Lora/GPS_HAT
 [3]: https://www.tindie.com/products/electronictrik/raspberry-pi0w-lora-shield-with-i2c-and-oled/
- 
-

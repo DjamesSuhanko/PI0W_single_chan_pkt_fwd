@@ -107,9 +107,9 @@ journalctl -f -u single_chan_pkt_fwd
 Pictures
 --------
 
-running daemon on Raspberry PI with LoRasPI shield    
+running daemon on Raspberry PI with PI0W Lora Shield with I2C and OLED    
 
-<img src="https://raw.githubusercontent.com/hallard/LoRasPI/master/images/LoRasPI-on-Pi.jpg" alt="LoRasPI plugged on PI">
+<img src="https://github.com/tuxtof/single_chan_pkt_fwd/raw/master/Raspberry-PI0W-Lora-Shield-with-I2C-and-OLED.jpeg" alt="Raspberry-PI0W-Lora-Shield-with-I2C-and-OLED">
 
 
 

@@ -751,6 +751,7 @@ int main()
   ioctl(s, SIOCGIFHWADDR, &ifr);
 
   display.clearDisplay();
+  display.setCursor(0,0);
 
   // ID based on MAC Adddress of eth0
   printf( "Gateway ID: %.2x:%.2x:%.2x:ff:ff:%.2x:%.2x:%.2x\n",

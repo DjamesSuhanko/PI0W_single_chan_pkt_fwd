@@ -750,6 +750,8 @@ int main()
   strncpy(ifr.ifr_name, "wlan0", IFNAMSIZ-1);  // can we rely on eth0?
   ioctl(s, SIOCGIFHWADDR, &ifr);
 
+  display.clearDisplay();
+
   // ID based on MAC Adddress of eth0
   printf( "Gateway ID: %.2x:%.2x:%.2x:ff:ff:%.2x:%.2x:%.2x\n",
               (uint8_t)ifr.ifr_hwaddr.sa_data[0],
@@ -760,8 +762,23 @@ int main()
               (uint8_t)ifr.ifr_hwaddr.sa_data[5]
   );
 
+  display.printf( "Gateway ID: %.2x:%.2x:%.2x:ff:ff:%.2x:%.2x:%.2x\n",
+              (uint8_t)ifr.ifr_hwaddr.sa_data[0],
+              (uint8_t)ifr.ifr_hwaddr.sa_data[1],
+              (uint8_t)ifr.ifr_hwaddr.sa_data[2],
+              (uint8_t)ifr.ifr_hwaddr.sa_data[3],
+              (uint8_t)ifr.ifr_hwaddr.sa_data[4],
+              (uint8_t)ifr.ifr_hwaddr.sa_data[5]
+  );
+  display.display();
+
   printf("Listening at SF%i on %.6lf Mhz.\n", sf,(double)freq/1000000);
   printf("-----------------------------------\n");
+
+  display.printf("Listening at SF%i on %.6lf Mhz.\n", sf,(double)freq/1000000);
+  display.display();
+
+
 
   while(1) {
 

@@ -802,6 +802,7 @@ int main()
       if (Led1 != 0xff) {
         digitalWrite(Led1, 1);
       }
+      led1_timer=millis();
       cp_nb_rx_rcv = 0;
       cp_nb_rx_ok = 0;
       cp_up_pkt_fwd = 0;

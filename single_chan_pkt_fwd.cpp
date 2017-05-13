@@ -763,7 +763,7 @@ int main()
               (uint8_t)ifr.ifr_hwaddr.sa_data[5]
   );
 
-  display.printf( "Gateway ID: %.2x:%.2x:%.2x:ff:ff:%.2x:%.2x:%.2x\n",
+  display.printf( "Gateway ID:\n%.2x:%.2x:%.2x:ff:ff:%.2x:%.2x:%.2x\n",
               (uint8_t)ifr.ifr_hwaddr.sa_data[0],
               (uint8_t)ifr.ifr_hwaddr.sa_data[1],
               (uint8_t)ifr.ifr_hwaddr.sa_data[2],
@@ -776,7 +776,7 @@ int main()
   printf("Listening at SF%i on %.6lf Mhz.\n", sf,(double)freq/1000000);
   printf("-----------------------------------\n");
 
-  display.printf("Listening at SF%i on %.6lf Mhz.\n", sf,(double)freq/1000000);
+  display.printf("Listening at SF%i\non %.6lf Mhz.\n", sf,(double)freq/1000000);
   display.display();
 
 
@@ -799,6 +799,9 @@ int main()
     if (nowseconds - lasttime >= 30) {
       lasttime = nowseconds;
       SendStat();
+      if (Led1 != 0xff) {
+        digitalWrite(Led1, 1);
+      }
       cp_nb_rx_rcv = 0;
       cp_nb_rx_ok = 0;
       cp_up_pkt_fwd = 0;
